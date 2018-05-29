@@ -11,22 +11,36 @@ class DoorWindow extends Homey.Driver {
 
     _initDevice() {
         this.log('_initDevice');
+		
+		
        
     }
 
     onPairListDevices( data, callback ) {
 
         let api = new Verisure();
-        api.getOverview();
+        api.getDoorWindow();
         api.delay();
         
         var d = Homey.ManagerSettings.get('doorWindow');
+		
         if(d != null) {
+            var devices = Array();
+            var i = 0;
+			d.forEach(function(entry) {
+                
+                
+                console.log('found ' + entry["area"][0]);
+                devices[i] = {};
+                devices[i]["name"] = entry["area"][0];
+                devices[i]["data"] = {};
+                devices[i]["data"]["id"] = entry["deviceLabel"][0];
+                i++;
+                
+            }); 
             
-            console.log(d);
-            console.log(d[0]);
-            console.log(d["deviceLabel"]);
-            console.log(d[0]["deviceLabel"]);
+            callback( null, devices); 
+            
         }
     }
 

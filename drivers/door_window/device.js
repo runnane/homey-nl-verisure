@@ -63,20 +63,27 @@ class DoorWindow extends Homey.Device {
             var d = this.getName();
             
             let api = new Verisure();
-            api.getOverview();
+            api.getDoorWindow();
 
             
-            var data = Homey.ManagerSettings.get('climateStatus');
-            var res = data["latestClimateSample"];
+            var data = Homey.ManagerSettings.get('doorWindow');
+            
             var bla = this;
             
-            res.forEach(function(entry) {
+            data.forEach(function(entry) {
                 
                 
-                if(entry["deviceArea"][0] && entry["deviceArea"][0] === d) {
-                    console.log(entry["deviceArea"][0] + ':' + entry["temperature"][0]);
+                if(entry["area"][0] && entry["area"][0] === d) {
+                    console.log(entry["area"][0] + ':' + entry["state"][0]);
                     
-                    bla.onSensorChange(parseInt(entry["temperature"][0]));
+					if(entry("state")) === "CLOSE") {
+						var v = true;
+					}
+					else {
+						var v = false;
+					}
+					
+                    bla.onSensorChange(v);
                     
                 }
             }); 

@@ -24,6 +24,8 @@ class VerisureApp extends Homey.App {
 		
 		api.getToken();
 		
+        api.getDoorWindow();
+        
 
 	}
 
