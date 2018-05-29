@@ -50,11 +50,12 @@ class VerisureApp extends Homey.App {
 	}
 
 	async setUser(username, password) {
-		this.log('[#141] Loading setUser()...');
+		this.log('[#141] Loading setUser(' + username + ' : ' + password + ')...');
 
 		Homey.ManagerSettings.set('username', username);
 		Homey.ManagerSettings.set('password', password);
 
+		return this.getUser();
 
 	}
 
