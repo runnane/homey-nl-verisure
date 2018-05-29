@@ -17,6 +17,9 @@ class Alarm extends Homey.Device {
         api.getInstallations();
         
         // register a capability listener
+        this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this))
+
+        // set poll interval
         this._pollAlarmInterval = setInterval(this.pollAlarmStatus.bind(this), POLL_INTERVAL);
     }
 
@@ -72,7 +75,7 @@ class Alarm extends Homey.Device {
     onCapabilityOnoff( value, opts, callback ) {
 
         // ... set value to real device
-
+        console.log("trigger on or off: " + value);
         // Then, emit a callback ( err, result )
         callback( null );
 

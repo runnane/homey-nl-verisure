@@ -80,6 +80,36 @@
           }
       ]
     },
+
+    {
+        "id": "door_window",
+        "name": {
+            "en": "Contactsensor",
+            "nl": "Contactsensor"
+        },
+        "images": {
+            "large": "./drivers/door_window/assets/large.png",
+            "small": "./drivers/door_window/assets/small.png"
+        },
+        "class": "sensor",
+        "capabilities": [ "alarm_contact" ],
+        "pair": [
+          {
+              "id": "start"
+          },
+          {
+              "id": "list_devices",
+              "template": "list_devices",
+              "navigation": {
+                  "next": "add_devices"
+              }
+          },
+          {
+              "id": "add_devices",
+              "template": "add_devices"
+          }
+      ]
+    },
     
     {
         "id": "verisure_alarm",

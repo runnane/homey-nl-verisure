@@ -23,7 +23,7 @@ class VerisureApp extends Homey.App {
 		let api = new Verisure();
 		
 		api.getToken();
-
+		
 
 	}
 
