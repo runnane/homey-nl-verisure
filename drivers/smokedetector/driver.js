@@ -11,6 +11,8 @@ class Smokedetector extends Homey.Driver {
 
     _initDevice() {
         this.log('_initDevice');
+        let api = new Verisure();
+        api.getOverview();
        
     }
 
@@ -18,27 +20,30 @@ class Smokedetector extends Homey.Driver {
 
         let api = new Verisure();
         api.getOverview();
-
+        api.delay();
+        
         var d = Homey.ManagerSettings.get('climateStatus');
-        var devices = Array();
-        var i = 0;
-        var res = d["latestClimateSample"];
-        
-        res.forEach(function(entry) {
+        if(d != null) {
+            console.log(d);
+            var devices = Array();
+            var i = 0;
+            var res = d["latestClimateSample"];
             
+            res.forEach(function(entry) {
+                
+                
+                if(entry["deviceType"][0] && entry["deviceType"][0] === "SMOKE2") {
+                    console.log('found ' + entry["deviceArea"][0]);
+                    devices[i] = {};
+                    devices[i]["name"] = entry["deviceArea"][0];
+                    devices[i]["data"] = {};
+                    devices[i]["data"]["id"] = entry["deviceLabel"][0];
+                    i++;
+                }
+            }); 
             
-            if(entry["deviceType"][0] && entry["deviceType"][0] === "SMOKE2") {
-                console.log('found ' + entry["deviceArea"][0]);
-                devices[i] = {};
-                devices[i]["name"] = entry["deviceArea"][0];
-                devices[i]["data"] = {};
-                devices[i]["data"]["id"] = entry["deviceLabel"][0];
-                i++;
-            }
-        }); 
-        
-        callback( null, devices);
-        
+            callback( null, devices);
+        }
     }
 
 }

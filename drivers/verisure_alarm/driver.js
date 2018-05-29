@@ -12,6 +12,7 @@ class AlarmDriver extends Homey.Driver {
         console.log('onPairListDevices');
         let api = new Verisure();
         api.getInstallations();
+        api.delay();
         
         var devices = Array();
         var i = 0;

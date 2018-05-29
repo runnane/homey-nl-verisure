@@ -186,6 +186,12 @@
 					username: username,
 					password: password,
 				}, function( err, result ) {
+					
+
+					if(result === 'OK') {
+						setAuthorizationState(true);
+					}
+
 					if( err && err.message === 'invalid_credentials' ) return errorEl.textContent = __('invalid_credentials')
 					if( err ) return Homey.alert( err );
 					getUser();										

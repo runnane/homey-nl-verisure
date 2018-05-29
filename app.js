@@ -39,7 +39,13 @@ class VerisureApp extends Homey.App {
 		this.log('[#130] Loading getUser()...');	
 		
 		if(Homey.ManagerSettings.get('username')) {
+			this.log('username found. loading api');
+			let api = new Verisure();
+			api.getToken();
+			this.log('requested token');
+			
 			return "OK";
+			
 		} else {
 			
 			return "NOTOK";
