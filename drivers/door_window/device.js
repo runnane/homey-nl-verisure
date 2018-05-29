@@ -76,7 +76,7 @@ class DoorWindow extends Homey.Device {
                 if(entry["area"][0] && entry["area"][0] === d) {
                     console.log(entry["area"][0] + ':' + entry["state"][0]);
                     
-					if(entry("state")) === "CLOSE") {
+					if(entry("state") === "CLOSE") {
 						var v = true;
 					}
 					else {
