@@ -17,6 +17,8 @@ class DoorWindow extends Homey.Device {
 
         // first run
         this.pollSensorStatus();
+         // register a capability listener
+        this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
 
         this._pollSensorInterval = setInterval(this.pollSensorStatus.bind(this), POLL_INTERVAL);
         
@@ -24,12 +26,11 @@ class DoorWindow extends Homey.Device {
     }
     onSensorChange(value) {
         
-        this.log('onSensorChange Window');
-        
         if(value) {
             this.setCapabilityValue('alarm_contact', value);
-        }
-
+            this.log('onSensorChange Window:' +value);
+        } 
+        
     }
 
     
@@ -70,18 +71,18 @@ class DoorWindow extends Homey.Device {
             
             var bla = this;
             
+			
             data.forEach(function(entry) {
                 
                 
                 if(entry["area"][0] && entry["area"][0] === d) {
                     
-                    
 					if(entry["state"][0] === "CLOSE") {
-						var v = false;
+						var v = new Boolean(true);
 						console.log(entry["area"][0] + ': true');
 					}
 					else {
-						var v = true;
+						var v = new Boolean(false);
 						console.log(entry["area"][0] + ': false');
 					}
 					
