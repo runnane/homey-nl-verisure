@@ -21,6 +21,8 @@ class Alarm extends Homey.Device {
 
         // set poll interval
         this._pollAlarmInterval = setInterval(this.pollAlarmStatus.bind(this), POLL_INTERVAL);
+
+        var s = api.setArmState(1103, 'ARMED_AWAY');
     }
 
     logger ( data ) {
