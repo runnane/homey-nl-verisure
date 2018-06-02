@@ -67,7 +67,7 @@ class Smokedetector extends Homey.Device {
 
 		if (Homey.ManagerSettings.get('username') != null) {      
             
-           	this.log('[#63] Polling climate...');	
+           	
             var d = this.getName();
             
             let api = new Verisure();
@@ -82,7 +82,7 @@ class Smokedetector extends Homey.Device {
                 
                 
                 if(entry["deviceArea"][0] && entry["deviceArea"][0] === d) {
-                    console.log(entry["deviceArea"][0] + ':' + entry["temperature"][0]);
+            
                     
                     bla.onTempChange(parseInt(entry["temperature"][0]));
                     bla.onHumidityChange(parseInt(entry["humidity"][0]));

@@ -79,11 +79,9 @@ class DoorWindow extends Homey.Device {
                     
 					if(entry["state"][0] === "CLOSE") {
 						var v = new Boolean(true);
-						console.log(entry["area"][0] + ': true');
 					}
 					else {
 						var v = new Boolean(false);
-						console.log(entry["area"][0] + ': false');
 					}
 					
                     bla.onSensorChange(v);
