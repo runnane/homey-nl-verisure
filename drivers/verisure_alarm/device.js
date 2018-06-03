@@ -85,8 +85,6 @@ class Alarm extends Homey.Device {
         // Then, emit a callback ( err, result )
         Promise.resolve();
 
-        // or, return a Promise
-        return Promise.reject( new Error('Switching the device failed!') );
     }
 
 }
