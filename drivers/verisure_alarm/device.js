@@ -16,6 +16,7 @@ class Alarm extends Homey.Device {
         let api = new Verisure();
         api.getInstallations();
        
+        this.registerCapabilityListener('homealarm_state', this.onCapabilityOnoff.bind(this))
 
         // set poll interval
         this._pollAlarmInterval = setInterval(this.pollAlarmStatus.bind(this), POLL_INTERVAL);
@@ -76,10 +77,13 @@ class Alarm extends Homey.Device {
 
         // ... set value to real device
         console.log("trigger on or off: " + value);
-        let api = new Verisure();
-        
+
+        if(Homey.ManagerSettings.get('keycode')) {
+            let api = new Verisure();
+            api.setArmState(value);
+        }
         // Then, emit a callback ( err, result )
-        callback( null );
+        Promise.resolve();
 
         // or, return a Promise
         return Promise.reject( new Error('Switching the device failed!') );

@@ -26,6 +26,13 @@ module.exports = [
 		fn: ( args ) => {
 			return Homey.app.unsetUser()
 		}
+	},
+	{
+		method: 'keycode',
+		path: '/test',
+		fn: ( args ) => {
+			return Homey.app.setUserKeycode( args.body.key )
+		}
 	}
 	
 ]

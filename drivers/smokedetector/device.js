@@ -87,7 +87,7 @@ class Smokedetector extends Homey.Device {
                         
                         if(entry["deviceArea"][0] && entry["deviceArea"][0] === d) {
                     
-                            console.log(d + ':' +parseInt(entry["temperature"][0]));
+                           // console.log(d + ':' +parseInt(entry["temperature"][0]));
                             bla.onTempChange(parseInt(entry["temperature"][0]));
                             bla.onHumidityChange(parseInt(entry["humidity"][0]));
                             

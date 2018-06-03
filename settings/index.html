@@ -29,9 +29,7 @@
 		.avatar {
 			position: relative;
 			margin: auto;
-			width: 100px;
-			height: 100px;
-			border-radius: 100px;
+			
 			background: #eee;
 			margin-bottom: 1em;
 			background-image: url(./avatar.png);
@@ -134,12 +132,15 @@
 			var profileEl = document.getElementById('profile');
 			var formEl = document.getElementById('form');
 			var errorEl = document.getElementById('error');
+			var errorE2 = document.getElementById('key_err');
 			var avatarEl = document.getElementById('avatar');
 			var nameEl = document.getElementById('name');
-			var addressEl = document.getElementById('address');
+			
+			var systemEl = document.getElementById('alarmdata');
 			var logoutEl = document.getElementById('logout');
-			
-			
+			var keySaveEl = document.getElementById('key_save');
+			var formE2 = document.getElementById('key');
+			var keyCode = document.getElementById('keycode');
 		
 			function getUser() {
 			
@@ -152,9 +153,17 @@
 						console.log(err);
 						return;
 					} 
+					Homey.get('username', function( err, username ) {
+               			if( err ) return Homey.alert( err );
+               			nameEl.textContent = username;
+					});
 					
+					Homey.get('alarm_name', function( err, username ) {
+               			if( err ) return Homey.alert( err );
+               			systemEl.textContent = username;
+            		});
 					
-					nameEl.textContent = result.personalData.firstName + ' ' + result.personalData.lastName;
+
 					avatarEl.style.backgroundImage = result.picture ? 'url(' + result.picture + ')' : '';
 					addressEl.textContent = result.personalData.street
 					 + ' ' + result.personalData.houseNumber
@@ -166,6 +175,18 @@
 				
 			}
 			
+			keySaveEl.addEventListener('click', function(e){
+				e.preventDefault();
+				
+				
+				
+				var key = keyCode.value;
+				Homey.set('keycode', key);
+				return errorE2.textContent = __('settings_saved')
+				
+				
+			});
+
 			logoutEl.addEventListener('click', function(e){
 				e.preventDefault();
 				
@@ -209,9 +230,22 @@
 	<body>
 		
 		<div id="profile">
+			<div id="avatar" class="avatar"></div>
 			<h2 class="title" id="name"></h2>
-			<div id="address"></div>
-			<button id="logout" data-i18n="logout" class="verisure-button"></button>
+			<div id="alarmdata"></div>
+			<br />
+			<form id="key" action="/" method="post">
+				<p data-i18n="keycode_form">
+				</p>
+				<input id="keycode" name="keycode" type="password" value="" data-i18n-placeholder="keycode" class="verisure-text" />
+			
+				<button id="key_save" data-i18n="save" class="verisure-button"></button>
+				<button id="logout" data-i18n="logout" class="verisure-button"></button>
+
+				<p id="key_err"></p>
+			</form>
+			
+			
 		</div>
 		
 		<form id="form" action="/" method="post">

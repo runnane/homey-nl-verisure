@@ -4,5 +4,8 @@
 	"logout": "Log out",
 	"username": "E-mail address",
 	"password": "Password",
+	"save": "Save",
+	"keycode_form": "Enter your personal keycode:",
+	"settings_saved": "Settings saved!",
 	"invalid_credentials": "Invalid e-mail address or password"
 }

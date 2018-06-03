@@ -4,5 +4,9 @@
 	"logout": "Uitloggen",
 	"username": "E-mail adres",
 	"password": "Wachtwoord",
+	"save": "Opslaan",
+	"keycode_form": "Vul uw persoonlijke deurcode in:",
+	"settings_saved": "Instellingen opgeslagen",
 	"invalid_credentials": "Verkeerde e-mail of wachtwoord"
+
 }
