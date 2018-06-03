@@ -60,7 +60,7 @@ class DoorWindow extends Homey.Device {
 
 		if (Homey.ManagerSettings.get('username') != null) {      
             
-           	this.log('[#63] Polling climate...');	
+           	this.log('[#63] Polling door_window...');	
             var d = this.getName();
             
             let api = new Verisure();
@@ -71,24 +71,25 @@ class DoorWindow extends Homey.Device {
             
             var bla = this;
             
-			
-            data.forEach(function(entry) {
+			if(data != null) {
+                data.forEach(function(entry) {
                 
                 
-                if(entry["area"][0] && entry["area"][0] === d) {
-                    
-					if(entry["state"][0] === "CLOSE") {
-						var v = new Boolean(true);
-					}
-					else {
-						var v = new Boolean(false);
-					}
-					
-                    bla.onSensorChange(v);
-                    
-                }
-            }); 
-
+                    if(entry["area"][0] && entry["area"][0] === d) {
+                        
+                        console.log(entry["state"][0]);
+                        if(entry["state"][0] === "CLOSE") {
+                            var v = new Boolean(true);
+                        }
+                        else {
+                            var v = new Boolean(false);
+                        }
+                        
+                        bla.onSensorChange(v);
+                        
+                    }
+                }); 
+            }
            
 			return Promise.resolve();
 			

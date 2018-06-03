@@ -15,9 +15,7 @@ class Alarm extends Homey.Device {
         
         let api = new Verisure();
         api.getInstallations();
-        
-        // register a capability listener
-        this.registerCapabilityListener('homealarm_state', this.onCapabilityOnoff.bind(this))
+       
 
         // set poll interval
         this._pollAlarmInterval = setInterval(this.pollAlarmStatus.bind(this), POLL_INTERVAL);
@@ -49,7 +47,7 @@ class Alarm extends Homey.Device {
         }
       
         this.setCapabilityValue('homealarm_state', v);
-        
+         
         Promise.resolve();
         //callback(null, state);
 
@@ -79,7 +77,7 @@ class Alarm extends Homey.Device {
         // ... set value to real device
         console.log("trigger on or off: " + value);
         let api = new Verisure();
-        var s = api.setArmState(1103, 'ARMED_AWAY');
+        
         // Then, emit a callback ( err, result )
         callback( null );
 
