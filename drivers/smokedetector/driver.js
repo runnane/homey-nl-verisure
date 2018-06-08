@@ -32,7 +32,7 @@ class Smokedetector extends Homey.Driver {
             res.forEach(function(entry) {
                 
                 
-                if(entry["deviceType"][0] && entry["deviceType"][0] === "SMOKE2") {
+                if(entry["deviceType"][0] && entry["deviceType"][0] === "SMOKE1" || entry["deviceType"][0] === "SMOKE2" || entry["deviceType"][0] === "SMOKE3") {
                     console.log('found ' + entry["deviceArea"][0]);
                     devices[i] = {};
                     devices[i]["name"] = entry["deviceArea"][0];
