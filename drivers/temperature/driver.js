@@ -30,7 +30,7 @@ class Temperature extends Homey.Driver {
             res.forEach(function(entry) {
                 
                 
-                if(entry["deviceType"][0] && entry["deviceType"][0] === "SIREN1" || entry["deviceType"][0] === "PIR1" || entry["deviceType"][0] === "PIR2") {
+                if(entry["deviceType"][0] && entry["deviceType"][0] === "SIREN1" || entry["deviceType"][0] === "PIR1" || entry["deviceType"][0] === "PIR2"|| entry["deviceType"][0] === "VOICEBOX1" || entry["deviceType"][0] === "HOMEPAD1") {
                     console.log('found ' + entry["deviceArea"][0]);
                     devices[i] = {};
                     devices[i]["name"] = entry["deviceArea"][0];
