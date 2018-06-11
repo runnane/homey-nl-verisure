@@ -13,7 +13,7 @@ class Temperature extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
        
-        const POLL_INTERVAL = 1000 * 60 * 1; // 30 minutes
+        const POLL_INTERVAL = 1000 * 60 * 1;
 
         // first run
         this.pollClimateStatus();
@@ -59,7 +59,7 @@ class Temperature extends Homey.Device {
 
 		if (Homey.ManagerSettings.get('username') != null) {      
             
-           //	this.log('[#63] Polling climate...');	
+           	this.log('[#62] Polling climate...');	
             var d = this.getName();
             
             let api = new Verisure();
@@ -75,7 +75,7 @@ class Temperature extends Homey.Device {
                     
                     
                         if(entry["deviceArea"][0] && entry["deviceArea"][0] === d) {
-                        //console.log(entry["deviceArea"][0] + ':' + entry["temperature"][0]);
+                        console.log(entry["deviceArea"][0] + ':' + entry["temperature"][0]);
                         
                         bla.onTempChange(parseInt(entry["temperature"][0]));
                         

@@ -109,7 +109,6 @@
 			function setAuthorizationState(authorized) {
 				
 				if(authorized === true) {
-					
 					formEl.style.display = 'none';
 					profileEl.style.display = 'block';
 				} else {
@@ -178,10 +177,9 @@
 			keySaveEl.addEventListener('click', function(e){
 				e.preventDefault();
 				
-				
-				
 				var key = keyCode.value;
 				Homey.set('keycode', key);
+				Homey.alert(__('settings_saved'));
 				return errorE2.textContent = __('settings_saved')
 				
 				
@@ -202,7 +200,7 @@
 				
 				var username = usernameEl.value;
 				var password = passwordEl.value;
-				alert('test');
+				
 				Homey.api('put', '/user', {
 					username: username,
 					password: password,
@@ -211,6 +209,8 @@
 
 					if(result === 'OK') {
 						setAuthorizationState(true);
+						Homey.alert(__('settings_saved'));
+						
 					}
 
 					if( err && err.message === 'invalid_credentials' ) return errorEl.textContent = __('invalid_credentials')
