@@ -11,6 +11,9 @@ What works:
 
 Author: Wieger Bontekoe - SKYNET ICT B.V.
 
+* Version: 1.0.5
+Add support for new devices (>2017)
+
 * Version: 1.0.4
 Several bugfixes
 Changed door window values (true/false)
