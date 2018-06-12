@@ -13,7 +13,7 @@ class Temperature extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
        
-        const POLL_INTERVAL = 1000 * 60 * 1;
+        const POLL_INTERVAL = 1000; // 1 second
 
         // first run
         this.pollClimateStatus();
