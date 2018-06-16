@@ -16,7 +16,7 @@ Author: Wieger Bontekoe - SKYNET ICT B.V.
 
 If you like the app, you can always donate so i can keep improving it :)
 
-[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](paypal.me/WiegerBontekoe)
+[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://paypal.me/WiegerBontekoe)
 
 ### Changelog
 
