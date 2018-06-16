@@ -10,7 +10,7 @@ class Alarm extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
         
-        const POLL_INTERVAL = 500; // 500 milliseconds
+        const POLL_INTERVAL = 1000; // One minute
 
         
         let api = new Verisure();
@@ -46,7 +46,7 @@ class Alarm extends Homey.Device {
         else {
             console.log(' unknown status: ' + state);
         }
-      
+        console.log(' unknown status: ' + state);
         this.setCapabilityValue('homealarm_state', v);
          
         Promise.resolve();

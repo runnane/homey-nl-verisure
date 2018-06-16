@@ -13,7 +13,7 @@ class Smokedetector extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
 
-        const POLL_INTERVAL = 1000; // 1 second 
+        const POLL_INTERVAL = 5000; // 5 minutes
       
         // first run
         this.pollClimateStatus();

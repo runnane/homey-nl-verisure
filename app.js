@@ -18,14 +18,14 @@ class VerisureApp extends Homey.App {
 	onInit() {
 
 		this.log('[#46] VerisureApp is running...');
-		
-		console.log('Get token');
+
 		let api = new Verisure();
-		
-		api.getToken();
-		
-        api.getDoorWindow();
-        
+
+		// Find a working server from this dumbass API
+
+		if(Homey.ManagerSettings.get('username')) {
+			api.serverSelect();
+		}
 
 	}
 
@@ -62,6 +62,7 @@ class VerisureApp extends Homey.App {
 
 		Homey.ManagerSettings.set('username', username);
 		Homey.ManagerSettings.set('password', password);
+
 
 		return this.getUser();
 
