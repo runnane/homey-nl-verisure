@@ -1,6 +1,6 @@
 {
   "id": "nl.verisure",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "name": {
@@ -22,6 +22,35 @@
     "email": "info@skynet-ict.nl"
   },
   "drivers": [
+    {
+        "id": "smartlock",
+        "name": {
+            "en": "SmartLock",
+            "nl": "SmartLock"
+        },
+        "images": {
+            "large": "./drivers/smartlock/assets/large.png",
+            "small": "./drivers/smartlock/assets/small.png"
+        },
+        "class": "lock",
+        "capabilities": [ "locked" ],
+        "pair": [
+          {
+              "id": "start"
+          },
+          {
+              "id": "list_devices",
+              "template": "list_devices",
+              "navigation": {
+                  "next": "add_devices"
+              }
+          },
+          {
+              "id": "add_devices",
+              "template": "add_devices"
+          }
+      ]
+    },
     {
         "id": "smokedetector",
         "name": {
