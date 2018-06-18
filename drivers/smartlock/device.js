@@ -18,7 +18,7 @@ class SmartLock extends Homey.Device {
         // first run
         this.pollSmartLockStatus();
          // register a capability listener
-       // this.registerCapabilityListener('onoff', this.onCapabilityOnoff.bind(this));
+        this.registerCapabilityListener('locked', this.onCapabilityOnoff.bind(this));
 
         this._pollSmartLockInterval = setInterval(this.pollSmartLockStatus.bind(this), POLL_INTERVAL);
         
@@ -28,7 +28,7 @@ class SmartLock extends Homey.Device {
         
         if(value) {
             this.setCapabilityValue('locked', value);
-            this.log('onLockChange SmartLock:' +value);
+            this.log('onLockChange SmartLock: ' + this.getName() + ' - '  + value);
         } 
         
     }
@@ -47,11 +47,12 @@ class SmartLock extends Homey.Device {
     onCapabilityOnoff( value, opts, callback ) {
 
         // ... set value to real device
-        console.log("trigger on or off: " + value);
+        console.log("trigger smartlock: " + value);
 
         if(Homey.ManagerSettings.get('keycode')) {
             let api = new Verisure();
-            api.setLockState(value);
+            var d = this.getData();
+            api.setLockState(d["deviceLabel"], value);
         }
         // Then, emit a callback ( err, result )
         Promise.resolve();
@@ -81,7 +82,7 @@ class SmartLock extends Homey.Device {
                         
                         console.log('SmartLock value: [' + entry["lockedState"][0] + ']');
                        
-                        if(entry["lockedState"][0] === "LOCKED") {
+                        if(entry["lockedState"][0] == "LOCKED") {
                             var v = new Boolean(true);
                         }
                         else {

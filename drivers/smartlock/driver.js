@@ -33,6 +33,8 @@ class SmartLock extends Homey.Driver {
                 devices[i]["name"] = entry["area"][0];
                 devices[i]["data"] = {};
                 devices[i]["data"]["id"] = entry["zone"][0];
+                devices[i]["data"]["deviceLabel"] = entry["deviceLabel"][0];
+                
                 i++;
                 
             }); 
