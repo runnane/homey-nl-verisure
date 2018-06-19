@@ -22,6 +22,10 @@ If you like the app, you can always donate so i can keep improving it :)
 ---
 ### Changelog
 
+
+##### Version: 1.0.7
+- Added support for Smartlock (Yale Doorman)
+
 ##### Version: 1.0.6
 - Bugfixes
 - Added support for multiple API servers
