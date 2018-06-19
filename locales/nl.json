@@ -7,6 +7,8 @@
 	"save": "Opslaan",
 	"keycode_form": "Vul uw persoonlijke deurcode in:",
 	"settings_saved": "Instellingen opgeslagen",
-	"invalid_credentials": "Verkeerde e-mail of wachtwoord"
+	"invalid_credentials": "Verkeerde e-mail of wachtwoord",
+	"donate-title": "Donaties",
+	"donate-text": "Als je de app leuk vindt, kun je altijd doneren zodat ik deze kan blijven verbeteren :)"
 
 }

@@ -7,5 +7,7 @@
 	"save": "Save",
 	"keycode_form": "Enter your personal keycode:",
 	"settings_saved": "Settings saved!",
-	"invalid_credentials": "Invalid e-mail address or password"
+	"invalid_credentials": "Invalid e-mail address or password",
+	"donate-title": "Donations",
+	"donate-text": "If you like the app, you can always donate so i can keep improving it :)"
 }
