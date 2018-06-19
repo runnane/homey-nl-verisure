@@ -1,0 +1,50 @@
+'use strict';
+
+const Homey = require('homey');
+const Verisure = require('../../lib/Api.js');
+
+
+const deviceMap = new Map();
+require('es6-promise').polyfill();
+
+class SmartLock extends Homey.Driver {
+
+    _initDevice() {
+        this.log('_initDevice');
+		
+    }
+
+    onPairListDevices( data, callback ) {
+        console.log("Discover smartlock");
+        
+        let api = new Verisure();
+        api.getSmartLock();
+      
+        var d = Homey.ManagerSettings.get('SmartLock');
+		
+        if(d != null) {
+            var devices = Array();
+            var i = 0;
+			d.forEach(function(entry) {
+                
+                
+                console.log('found SmartLock ' + entry["area"][0]);
+                devices[i] = {};
+                devices[i]["name"] = entry["area"][0];
+                devices[i]["data"] = {};
+                devices[i]["data"]["id"] = entry["zone"][0];
+                devices[i]["data"]["deviceLabel"] = entry["deviceLabel"][0];
+                
+                i++;
+                
+            }); 
+            
+            callback( null, devices); 
+            
+        }
+        
+    }
+
+}
+
+module.exports = SmartLock;
