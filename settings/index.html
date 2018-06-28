@@ -125,10 +125,10 @@
 			
 			Homey.api('get', '/user', function( err, result ){
 				
-				if (result === "OK") {
-						setAuthorizationState(true);
-					} else {
+				if (result === "NOTOK") {
 						setAuthorizationState(false);
+					} else {
+						setAuthorizationState(true);
 					}
 			})	
 			var usernameEl = document.getElementById('username');
@@ -212,14 +212,19 @@
 				}, function( err, result ) {
 					
 
-					if(result === 'OK') {
-						setAuthorizationState(true);
-						Homey.alert(__('settings_saved'));
+					if(result === 'NOTOK') {
+						setAuthorizationState(false);
+						Homey.alert(__('invalid_credentials'));
 						
+					} else {
+
+						Homey.get('alarm_name', function( err, username ) {
+               			
+	    	       			systemEl.textContent = result;
+    	        		});
 					}
 
-					if( err && err.message === 'invalid_credentials' ) return errorEl.textContent = __('invalid_credentials')
-					if( err ) return Homey.alert( err );
+					
 					getUser();										
 				})
 				

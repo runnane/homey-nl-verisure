@@ -45,8 +45,15 @@ class VerisureApp extends Homey.App {
 			let api = new Verisure();
 			api.getToken();
 			this.log('requested token');
+			api.getInstallations();
 			
-			return "OK";
+			if(Homey.ManagerSettings.get('alarm_name') != null) {
+				return Homey.ManagerSettings.get('alarm_name') + ' ' + Homey.ManagerSettings.get('alarm_houseno');
+			}
+			else {
+				return "NOTOK";
+			}
+
 			
 		} else {
 			

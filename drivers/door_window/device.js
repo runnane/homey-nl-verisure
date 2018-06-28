@@ -13,7 +13,7 @@ class DoorWindow extends Homey.Device {
     // this method is called when the Device is inited
     onInit() {
        
-        const POLL_INTERVAL = 1000; // 
+        const POLL_INTERVAL = 10000; // 
 
         // first run
         this.pollSensorStatus();
