@@ -219,8 +219,9 @@
 					} else {
 
 						Homey.get('alarm_name', function( err, username ) {
-               			
-	    	       			systemEl.textContent = result;
+							Homey.alert(__('settings_saved'));
+							   systemEl.textContent = result;
+							   setAuthorizationState(true);
     	        		});
 					}
 
