@@ -81,6 +81,10 @@ class Alarm extends Homey.Device {
         if(Homey.ManagerSettings.get('keycode')) {
             let api = new Verisure();
             api.setArmState(value);
+            callback(null, value);
+        }
+        else {
+            callback("error", false);
         }
         // Then, emit a callback ( err, result )
         Promise.resolve();
