@@ -86,8 +86,6 @@ class Alarm extends Homey.Device {
         else {
             callback("error", false);
         }
-        // Then, emit a callback ( err, result )
-        Promise.resolve();
 
     }
 
