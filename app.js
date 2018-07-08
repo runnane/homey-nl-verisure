@@ -21,11 +21,7 @@ class VerisureApp extends Homey.App {
 
 		let api = new Verisure();
 		
-		// Find a working server from this dumbass API
-
-		if(Homey.ManagerSettings.get('username')) {
-			api.serverSelect();
-		}
+		
 
 	}
 
